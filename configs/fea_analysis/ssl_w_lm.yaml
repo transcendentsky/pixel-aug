@@ -1,0 +1,49 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/fea_analysis/"
+  experiment: 'ssl'
+  tag: ''
+  stage: ''
+logger:
+  mode: '' #  mode: ['tb', ]
+#  recorder_reduction: 'sum'
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+
+special:
+#  num_landmarks: 19
+  lambda: 2
+  regress: true  # Regression module
+
+  # Important Params
+  non_local: true
+  patch_size: 256
+  emb_len: 16
+  nearby: 9
+
+training:
+  # Optimizer + Scheduler + Training Env
+  #  gpus: '0,1,6,7'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25807'
+  # Optimizer
+  lr: 0.00001
+  weight_decay: 0.0001
+  alpha: 0.99
+  decay_step: 50
+  decay_gamma: 0.8
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 2500  # epochs
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 10
+  # betas:
+  load_pretrain_model: true
+
+
+#network:
+#  pretrain: '/home1/quanquan/code/landmark/code/runs_tr/std5/best_model_epoch_1850.pth'

@@ -1,0 +1,11 @@
+*.pth
+*.jpg
+*.png
+*.pyc
+/tmp/*
+*tmp*
+/paper_mi/*
+/paper_figure/*
+.tmp/*
+visuals/*
+

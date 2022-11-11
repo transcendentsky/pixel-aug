@@ -1,0 +1,3 @@
+[2021-10-28-08:30:20 @tlogger.py:167] [s1-sift] Argv: python /home1/quanquan/code/landmark/code/tproj/sc/cross_ssl/sift_matching.py --tag s1
+[2021-10-28-08:30:20 @tutils.py:33] [s1-sift] Existing yaml file 'sift/sift/s1//config.yaml' backuped to 'sift/sift/s1//config.yaml.1028-083020' 
+[2021-10-28-08:30:20 @tutils.py:38] [s1-sift] Saved config.yaml to sift/sift/s1//config.yaml

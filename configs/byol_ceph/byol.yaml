@@ -1,0 +1,58 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/byol-2d/"
+  experiment: 'byol_std'
+  tag: ''
+  stage: ''
+logger:
+  mode: ['tb', ]
+
+dataset:
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+  crop_size: [384, 384]
+  patch_size: [192, 192]
+#  entr: '/home1/quanquan/datasets/Cephalometric/entr1/train/'
+  entr: '/home1/quanquan/datasets/Cephalometric/entr1/train/'
+#  prob: '/home1/quanquan/datasets/Cephalometric/prob/train/'
+  prob: '/home1/quanquan/datasets/Cephalometric/prob_pseudo/train/'
+
+special:
+  num_landmarks: 19
+  alpha: 0.99
+  lambda: 2
+  # regress: true  # Regression module
+  non_local: true
+  patch_size: 64
+  emb_len: 16
+  nearby: 8
+  # patch_size: 64
+  # emb_len: 16
+  # nearby: 9
+
+# settings in Trainer
+training:
+  ret_fea_16: true
+#  gpus: '6,7'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25707'
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 4800
+  save_seq : 100
+  use_amp: false
+  val_seq: 10
+  load_pretrain_model: false
+  weight_decay: 0.0001
+  decay_step: 100
+  decay_gamma: 0.8
+
+  # Important Params
+  lr: 0.00001
+
+# Testing
+testing:
+  epoch: 1
+  batch_size: 1
+  label_name: 'BrainStem'
+#  LABEL_CONFIG: {'labels': {'BrainStem', 'Mandible', 'Parotid_L', 'Parotid_R'}}

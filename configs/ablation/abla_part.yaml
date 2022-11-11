@@ -1,0 +1,36 @@
+# Used with ablation_exec (cmd)
+
+base:
+  #  gpus: "0,1,2,3"
+  base_dir: '../runs/vaal/'
+  experiment: "abla"
+  tag: ''
+
+ablation:
+  gather_record: false
+  parse_mode: "configs" # "configs" or "args"
+
+  config_file: "configs/baseline/baseline_reg.yaml"
+  running_cmd: "CUDA_VISIBLE_DEVICES=1 python -m sc.baseline.baseline_part"
+
+  tags: "auto" # ["tag1", "tag2"]
+
+#  fixed_opts:
+#    training:
+#      lr: 0.001
+#  opts:
+#    training:
+#      batch_size: [4,8]
+#      num_workers: [2,3]
+#    base:
+#      runs_dir: ['...', '...']
+  opts:
+    base:
+      indices: [[31, 26, 113, 15, 20, 144, 133, 39, 106, 98, 132, 147, 66, 146, 38],
+              [31, 26, 113, 15, 20, 144, 133, 39, 106, 98, 132, 147, 66, 146, 38, 121, 123, 57, 112, 99, 72, 14, 19, 85, 92, 2, 100, 61, 148, 101],
+              [31, 26, 113, 15, 20, 144, 133, 39, 106, 98, 132, 147, 66, 146, 38, 121, 123, 57, 112, 99, 72, 14, 19, 85, 92, 2, 100, 61, 148, 101, 59, 70, 89, 45, 50, 84, 1, 108, 80, 87, 58, 32, 0, 9, 143],
+              [31, 26, 113, 15, 20, 144, 133, 39, 106, 98, 132, 147, 66, 146, 38, 121, 123, 57, 112, 99, 72, 14, 19, 85, 92, 2, 100, 61, 148, 101, 59, 70, 89, 45, 50, 84, 1, 108, 80, 87, 58, 32, 0, 9, 143, 138, 8, 134, 114, 6, 47, 107, 11, 105, 103, 127, 83, 64, 95, 116],
+    ]
+#    train_count: [50,50,50,50]
+
+#  opts: ['training:batch_size', 'training:num_workers']

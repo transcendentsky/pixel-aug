@@ -1,0 +1,69 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/baseline/"
+  experiment: 'segmenter'
+  tag: ''
+  stage: ''
+logger:
+  mode: ['tb', ]
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+special:
+  num_landmarks: 19
+  emb_len: 16
+  nearby : 6
+  alpha: 0.99
+  lambda: 2
+  regress: false  # Regression module
+
+training:
+  gpus: '5'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25709'
+  batch_size : 8
+  num_workers : 4
+  num_epochs : 2000  # epochs
+  use_amp: true
+  save_interval : 200
+  val_check_interval: 100
+  decay_step: 400
+  decay_gamma: 0.9
+  lambda: 2
+  lr: 0.0001
+  weight_decay: 0.0001
+  indices:
+
+# Segmenter Configs
+#  deit_base_distilled_patch16_384
+model_cfg:
+  backbone: 'deit_base_distilled_patch16_384'
+  image_size: [384, 384]
+  patch_size: 16
+  d_model: 768
+  n_heads: 12
+  n_layers: 12
+  normalization: deit
+  distilled: true
+
+  n_cls: 1000
+  # @click default options
+  dropout: 0.0
+  drop_path: 0.1
+
+
+#  name: "mask_transformer"
+decoder_cfg:
+  drop_path_rate: 0.0
+  dropout: 0.1
+  n_layers: 2
+  d_encoder: 192 # == encoder.d_model
+  patch_size: 16 # == encoder.patch_size
+
+#  n_heads =
+#  linear: {}
+#  deeplab_dec:
+#    encoder_layer: -1
+#mask_transformer:

@@ -1,0 +1,46 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/self_train/"
+  experiment: 'self_train_handx'
+  tag: ''
+  stage: ''
+logger:
+  mode: ['tb', ]
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/hand/hand/'
+  n_cls: 37
+
+special:
+  emb_len: 16
+  nearby : 6
+  alpha: 0.99
+  lambda: 2
+  regress: true  # Regression module
+  non_local: false
+  patch_size: 192
+
+training:
+  batch_size: 16
+  num_workers: 8
+  num_landmarks: 19
+  lr: 0.00001
+  decay_step: 50
+  decay_gamma: 0.8
+  num_epochs: 1280
+  save_seq: 20
+  #  gpus: '0,1,6,7'
+
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25807'
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 10
+  # betas:
+  weight_decay: 0.0001
+  alpha: 0.99
+#  load_pretrain_model: true
+
+
+

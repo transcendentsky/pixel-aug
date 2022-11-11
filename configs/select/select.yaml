@@ -1,0 +1,38 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/select/"
+  experiment: 'select'
+  tag: ''
+  stage: ''
+logger:
+  mode: ''
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+
+special:
+  num_landmarks: 19
+  emb_len: 16
+  nearby : 6
+  alpha: 0.99
+  lambda: 2
+  regress: true  # Regression module
+  non_local: true
+
+training:
+  non_local: true
+  gpus: '2,3'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25707'
+  batch_size: 16
+  num_workers: 0
+  num_epochs: 1000  # epochs
+  use_amp: false
+  save_interval: 50
+  val_check_interval: 50
+  decay_step: 200
+  decay_gamma: 0.8
+  lr: 0.0001
+  weight_decay: 0.0001

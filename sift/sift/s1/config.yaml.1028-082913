@@ -1,0 +1,19 @@
+base:
+  __INFO__:
+    Argv: 'Argv: python /home1/quanquan/code/landmark/code/tproj/sc/cross_ssl/sift_matching.py
+      --tag s1'
+    logger: logging_only
+    runtime: 2021-10-28-08:28:50.484354
+  base_dir: sift
+  config: ./configs/config.yaml
+  experiment: sift
+  func: train
+  runs_dir: sift/sift/s1/
+  tag: s1
+  test: false
+dataset:
+  n_cls: 19
+  name: Cephalometric
+  pth: /home1/quanquan/datasets/Cephalometric/
+logger:
+  action: k

@@ -1,0 +1,7 @@
+base:
+  base_dir: "../runs-ana"
+  experiment: 'uncertain'
+#  tag: ''
+#  stage: ''
+logger:
+  mode: ['tb', ]

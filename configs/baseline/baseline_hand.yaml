@@ -1,0 +1,43 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/baseline/"
+  experiment: 'baseline_hand'
+  tag: ''
+  stage: ''
+logger:
+  mode: ['tb', ]
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/hand/hand/'
+#  label_path: '/home1/quanquan/datasets/hand/hand/all.csv'
+  n_cls: 37
+
+special:
+  emb_len: 128
+  nearby : 6
+  alpha: 0.99
+  lambda: 2
+  regress: true  # Regression module
+  non_local: false
+
+training:
+  gpus: ''
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25709'
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 1000  # epochs
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 50
+  decay_step: 200
+  decay_gamma: 0.8
+  lambda: 2
+  lr: 0.0001
+  weight_decay: 0.0001
+  indices:
+  load_pretrain_model: false
+
+#network:
+#  pretrain: '/home1/quanquan/code/landmark/code/runs_tr/std5/best_model_epoch_1850.pth'

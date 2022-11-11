@@ -1,0 +1,54 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/vaal/"
+  experiment: 'vaal'
+  tag: ''
+  stage: ''
+logger:
+  #  mode: ['tb', ]
+  mode: ''
+  recorder_reduction: 'sum'
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+  #  im_size: 520
+  #  crop_size: 480
+  #  window_size: 480
+  #  window_stride: 320
+special:
+  num_landmarks: 19
+  lambda: 2
+  regress: true  # Regression module
+
+custom:
+  note: 'for some settings'
+
+training:
+  #  gpus: '0,1,6,7'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25807'
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 2500  # epochs
+  num_landmarks: 19
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 10
+  decay_step: 50
+  decay_gamma: 0.8
+  # betas:
+  weight_decay: 0.0001
+  alpha: 0.99
+  load_pretrain_model: true
+
+  # Important Params
+  non_local: true
+  patch_size: 256
+  emb_len: 16
+  nearby: 9
+  lr: 0.00001
+
+#network:
+#  pretrain: '/home1/quanquan/code/landmark/code/runs_tr/std5/best_model_epoch_1850.pth'

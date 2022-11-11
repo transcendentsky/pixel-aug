@@ -1,0 +1,21 @@
+ablation:
+  # tag/ablation.tag_try{i}
+  tag: "abla"
+  config_file: "configs/multi_stage.yaml"
+  script_file: "-m scripts.ms1"
+  is: true
+  count: 30
+  opts:
+    num_ref: [10,10,10,10,10,10,10,10,10,10,20,20,20,20,20,20,20,20,20,20,30,30,30,30,30,30,30,30,30,30]
+    use_amp: [true, false, true, true, ]
+#    training:
+#      batch_size: [4,8]
+#      num_workers: [2,3]
+
+#  opts: ['training:batch_size', 'training:num_workers']
+
+base:
+  experiment: "semi_train"
+  gpus: '0,1'
+  base_dir: '../runs-ana/'
+  tag: ''

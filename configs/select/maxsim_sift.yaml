@@ -1,0 +1,26 @@
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/select/"
+  experiment: 'select'
+  tag: ''
+  stage: ''
+logger:
+  mode: ''
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+  n_cls: 19
+
+training:
+  non_local: true
+  emb_len: 16
+
+sift_lm_pth: "/home1/quanquan/code/landmark/code/stat_analysis/runs/sift_landmarks2/RawImage/TrainingData/"
+#sift_lm_pth: "/home/quanquan/hand/hand/sift_landmarks/"
+num_used_sift_lm: -1
+select_policy: "select_descrete_points_by_distance"
+select_distance: 100
+
+
+# d180 -> n73
+# d40 -> n156

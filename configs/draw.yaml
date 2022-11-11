@@ -1,0 +1,30 @@
+special:
+  num_landmarks: 19
+
+# ------------------------------------------------
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/draw/"
+  experiment: ''
+  tag: ''
+  stage: ''
+
+training:
+  #  gpus: '0,1,6,7'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25807'
+  save_mode: ['all', 'best', 'latest']
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 1000  # epochs
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 10
+  load_pretrain_model: false
+  lr: 0.0001
+
+  # betas:
+  decay_step: 50
+  decay_gamma: 0.8
+  weight_decay: 0.0001
+  alpha: 0.99

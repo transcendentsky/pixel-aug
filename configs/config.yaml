@@ -1,0 +1,70 @@
+####  basic configs
+#base:
+#  base_dir: "../runs/debug/"
+#  experiment: 'debug'
+#  tag: ''
+#  stage: ''
+#logger:
+#  mode: ''
+#
+#dataset:
+#  name: 'Cephalometric'
+#  pth: '/home1/quanquan/datasets/Cephalometric/'
+#  n_cls: 19
+
+
+
+dataset:
+  name: 'Cephalometric'
+  pth: '/home1/quanquan/datasets/Cephalometric/'
+#  entr: '/home1/quanquan/datasets/Cephalometric/entr1/train/'
+  entr: '/home1/quanquan/datasets/Cephalometric/entr1/train/'
+  prob: '/home1/quanquan/datasets/Cephalometric/prob/train/'
+  n_cls: 19
+special:
+  num_landmarks: 19
+  lambda: 2
+  regress: true  # Regression module
+  non_local: true
+  patch_size: 64
+  emb_len: 16
+  nearby: 9
+
+#network:
+#  pretrain: '/home1/quanquan/code/landmark/code/runs/ssl/ssl/debug2/ckpt/best_model_epoch_890.pth'
+#  pretrain2: '/home1/quanquan/code/landmark/code/runs/ssl/ssl/debug2/model_patch_epoch_1063.pth'
+
+# ------------------------------------------------
+base:
+  base_dir: "/home1/quanquan/code/landmark/code/runs/ssl/"
+  experiment: 'ssl'
+  tag: ''
+  stage: ''
+logger:
+  mode: ['tb', ]
+#  mode: ''
+  recorder_reduction: 'mean'
+
+training:
+  #  gpus: '0,1,6,7'
+  ddp:
+    master_addr: 'localhost'
+    master_port: '25807'
+  save_mode: ['best', 'latest' ] # 'all',
+  batch_size : 8
+  num_workers : 8
+  num_epochs : 1000  # epochs
+  use_amp: false
+  save_interval : 50
+  val_check_interval: 10
+  load_pretrain_model: false
+  lr: 0.0001
+
+  # betas:
+  decay_step: 50
+  decay_gamma: 0.8
+  weight_decay: 0.0001
+  alpha: 0.99
+  #  pretrained_model: None
+
+  # Extra Important Params, old-version
